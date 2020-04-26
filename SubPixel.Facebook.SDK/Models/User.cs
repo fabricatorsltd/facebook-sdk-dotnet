@@ -1,9 +1,19 @@
+/* 
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. 
+ *
+ * Author: Pietro di Caprio <pietro.dicaprio@subpixel.it>
+ * Please open an issue on GitHub for any problem or question.
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace SubPixel.Facebook.SDK.Models
@@ -144,7 +154,7 @@ namespace SubPixel.Facebook.SDK.Models
 
         public enum Scope
         {
-            id, first_name, last_name, middle_name, name, name_format, picture, short_name, email
+            id, first_name, last_name, middle_name, name, name_format, picture, short_name, email, birthday, gender
         }
 
         public static IGraphResponse Me(Client client, List<Scope> scopes) => Get(client, 0, scopes);
@@ -152,15 +162,19 @@ namespace SubPixel.Facebook.SDK.Models
         {
             string url = client.APIEndpoint;
             url += String.Format("{0}/?fields=", userId == 0 ? "me" : userId.ToString());
-            string _scopes = "";
+            StringBuilder _scopes = new StringBuilder();
             if (scopes != null)
             {
                 foreach (Scope scope in scopes)
-                    _scopes += "," + scope;
+                {
+                    _scopes.Append("," + scope);
+                }
                 _scopes = _scopes.Remove(0, 1);
             }
             else
-                _scopes = "id,first_name,last_name,middle_name,name,name_format,picture,short_name";
+            {
+                _scopes = new StringBuilder("id,first_name,last_name,middle_name,name,name_format,picture,short_name");
+            }
             url += _scopes + client.AccessToken;
 
             return client.DoRequest(url, typeof(User));

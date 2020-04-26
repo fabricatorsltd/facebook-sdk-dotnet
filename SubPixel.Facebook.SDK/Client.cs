@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* 
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. 
+ *
+ * Author: Pietro di Caprio <pietro.dicaprio@subpixel.it>
+ * Please open an issue on GitHub for any problem or question.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
@@ -10,14 +19,15 @@ namespace SubPixel.Facebook.SDK
     public class Client
     {
         public string APIEndpoint { get { return "https://graph.facebook.com/"; } }
-        public bool IsProduction { get; internal set; }
         public string AccessToken { get; internal set; }
 
         public Client(
             string accessToken)
         {
-            if(!accessToken.StartsWith("&access_token="))
-			    accessToken = "&access_token=" + accessToken;
+            if (!accessToken.StartsWith("&access_token="))
+            {
+                accessToken = "&access_token=" + accessToken;
+            }
             AccessToken = accessToken;
         }
 
@@ -26,11 +36,14 @@ namespace SubPixel.Facebook.SDK
             WebClient client = new WebClient();
             string tempToken = AccessToken;
             if (tempToken.StartsWith("&access_token="))
+            {
                 tempToken = tempToken.Remove(0, 14);
+            }
+
             try
             {
                 var json = client.DownloadString(APIEndpoint  +
-                    String.Format("debug_token?input_token={0}&access_token={1}", tempToken, tempToken));
+                    String.Format("debug_token?input_token={0}{1}", tempToken, AccessToken));
                 return JsonConvert.DeserializeObject<Models.TokenData>(json).Data;
             }
             catch (WebException ex)
@@ -41,13 +54,13 @@ namespace SubPixel.Facebook.SDK
                     responseText = reader.ReadToEnd();
                 }
 
-                return JsonConvert.DeserializeObject<Models.Error>(responseText);
+                return JsonConvert.DeserializeObject<Models.ErrorRootObj>(responseText).Error;
             }
             catch (Exception ex)
             {
                 dynamic error = new ExpandoObject();
                 error.Message = ex.Message;
-                return new Models.Error()
+                return new Models.Error
                 {
                     Message = ex.Message
                 };
@@ -57,7 +70,9 @@ namespace SubPixel.Facebook.SDK
         public Models.IGraphResponse DoRequest(string url, Type returnObj)
         {
             if (returnObj.GetInterface("IGraphResponse") == null)
+            {
                 return null;
+            }
 
             WebClient webClient = new WebClient();
 
@@ -80,7 +95,7 @@ namespace SubPixel.Facebook.SDK
             {
                 dynamic error = new ExpandoObject();
                 error.Message = ex.Message;
-                return new Models.Error()
+                return new Models.Error
                 {
                     Code = -1,
                     Message = ex.Message

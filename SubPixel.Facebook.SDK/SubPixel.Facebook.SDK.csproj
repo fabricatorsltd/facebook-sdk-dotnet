@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.21</FileVersion>
+    <FileVersion>1.0.0.25</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
