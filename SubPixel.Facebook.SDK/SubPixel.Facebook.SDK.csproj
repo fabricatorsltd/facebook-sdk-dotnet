@@ -11,6 +11,13 @@
     <RepositoryType>GIT</RepositoryType>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0.25</FileVersion>
+    <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
+    <PackageProjectUrl>https://github.com/SubPixel-it/instagram-sdk-dotnet</PackageProjectUrl>
+    <PackageIcon>Subpixel-logo-2020_icon_whitebg_border.png</PackageIcon>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+    <PackageTags>facebook,graph-api,sdk</PackageTags>
+    <PackageReleaseNotes>First release. It allows to get basic user's data. Checkout the GitHub project for an example code.</PackageReleaseNotes>
+    <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
