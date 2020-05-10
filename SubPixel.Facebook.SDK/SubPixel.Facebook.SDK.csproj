@@ -1,22 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>SubPixel</Authors>
     <Product>Facebook SDK</Product>
     <Copyright>SubPixel 2020</Copyright>
     <RepositoryUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.25</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
-    <PackageProjectUrl>https://github.com/SubPixel-it/instagram-sdk-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</PackageProjectUrl>
     <PackageIcon>Subpixel-logo-2020_icon_whitebg_border.png</PackageIcon>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageTags>facebook,graph-api,sdk</PackageTags>
-    <PackageReleaseNotes>First release. It allows to get basic user's data. Checkout the GitHub project for an example code.</PackageReleaseNotes>
+    <PackageReleaseNotes>Downgrade Target Framework to 2.1 in order to increase compatibility.</PackageReleaseNotes>
     <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
 
