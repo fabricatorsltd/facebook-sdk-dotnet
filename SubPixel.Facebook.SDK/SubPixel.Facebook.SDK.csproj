@@ -3,14 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
     <Authors>SubPixel</Authors>
     <Product>Facebook SDK</Product>
     <Copyright>SubPixel 2021</Copyright>
     <RepositoryUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0.1</FileVersion>
+    <BuildNumber Condition=" '$(BuildNumber)' == '' ">1</BuildNumber>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">-dev</VersionSuffix>
+    <Version>1.1.1$(VersionSuffix)</Version>
+    <FileVersion>1.1.1.$(BuildNumber)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
     <PackageProjectUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</PackageProjectUrl>
     <PackageIcon>Subpixel-logo-2020_icon_whitebg_border.png</PackageIcon>
