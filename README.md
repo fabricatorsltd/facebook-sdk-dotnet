@@ -3,7 +3,7 @@
 This project is born for a personal need, I'm not sure yet if it is going to have a future as public and maintained repository.
 
 ## Badges
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/19b732c31a0046e0a72ca2268cd65968)](https://www.codacy.com/gh/SubPixel-it/facebook-sdk-dotnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubPixel-it/facebook-sdk-dotnet&amp;utm_campaign=Badge_Grade) [![License Badge](https://img.shields.io/badge/license-MPL--2.0-blue)](https://github.com/SubPixel-it/instagram-sdk-dotnet/blob/master/LICENSE) [![NuGet Badge](https://img.shields.io/badge/nuget-1.0.1-blue)](https://www.nuget.org/packages/SubPixel.Facebook.SDK/) [![Build Status](https://travis-ci.com/SubPixel-it/facebook-sdk-dotnet.svg?branch=master)](https://travis-ci.com/SubPixel-it/facebook-sdk-dotnet)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/19b732c31a0046e0a72ca2268cd65968)](https://www.codacy.com/gh/SubPixel-it/facebook-sdk-dotnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubPixel-it/facebook-sdk-dotnet&amp;utm_campaign=Badge_Grade) [![License Badge](https://img.shields.io/badge/license-MPL--2.0-blue)](https://github.com/SubPixel-it/instagram-sdk-dotnet/blob/master/LICENSE) [![NuGet Badge](https://img.shields.io/badge/nuget-1.1.1-blue)](https://www.nuget.org/packages/SubPixel.Facebook.SDK/) [![Build Status](https://travis-ci.com/SubPixel-it/facebook-sdk-dotnet.svg?branch=master)](https://travis-ci.com/SubPixel-it/facebook-sdk-dotnet)
 
 ## Useful links
 *   [Facebook Permissions list](https://developers.facebook.com/docs/facebook-login/permissions)
