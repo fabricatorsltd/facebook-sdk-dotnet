@@ -20,5 +20,4 @@ _(Here only the major todos are reported)_
 ### _1.0.1_
 Downgrade Target Framework to 2.1 in order to increase compatibility.
 ### _1.0.0_
-First release. It allows to get basic user's data. Checkout the GitHub project for an example code.## _1.0.0_
 First release. It allows to get basic user's data. Checkout the GitHub project for an example code.
