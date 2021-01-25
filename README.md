@@ -17,9 +17,4 @@ _(Here only the major todos are reported)_
 *   [ ] Provide code examples in Wiki
 
 ## Release Notes
-### _1.1.0_
-Implement call to get user's Friends that have installed the app corresponding to the AuthToken.
-### _1.0.1_
-Downgrade Target Framework to 2.1 in order to increase compatibility.
-### _1.0.0_
-First release. It allows to get basic user's data. Checkout the GitHub project for an example code.
+[Releases page](https://github.com/SubPixel-it/facebook-sdk-dotnet/releases)
