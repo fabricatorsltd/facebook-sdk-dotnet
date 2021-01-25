@@ -42,7 +42,7 @@ namespace SubPixel.Facebook.SDK
             try
             {
                 var json = client.DownloadString(APIEndpoint  +
-                                                 $"debug_token?input_token={tempToken}");
+                                                 $"debug_token?input_token={tempToken}{AccessToken}");
                 return JsonConvert.DeserializeObject<Models.TokenData>(json).Data;
             }
             catch (WebException ex)
