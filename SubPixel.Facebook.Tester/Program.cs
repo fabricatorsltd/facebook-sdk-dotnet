@@ -23,14 +23,17 @@ namespace SubPixel.Facebook.Tester
             Console.WriteLine("SubPixel Facebook SDK tester");
             Client fbClient = new Client(AUTH_TOKEN);
 
-            List<User.Scope> userScopes = Scopes(fbClient);
-            if(userScopes != null)
-            {
-                if(userScopes.Count != 0)
-                {
-                    GetMe(fbClient, userScopes);
-                }
-            }
+            //List<User.Scope> userScopes = Scopes(fbClient);
+            //if(userScopes != null)
+            //{
+            //    if(userScopes.Count != 0)
+            //    {
+            //        GetMe(fbClient, userScopes);
+            //    }
+            //}
+
+            GetMe(fbClient, null);
+            GetFriends(fbClient);
         }
 
         static List<User.Scope> Scopes(Client client)
@@ -96,6 +99,34 @@ namespace SubPixel.Facebook.Tester
             {
                 User user = (User)response;
                 Console.WriteLine(user.Name);
+            }
+            else if (response.GetType() == typeof(Error))
+            {
+                Console.WriteLine(((Error)response).Message);
+            }
+            else
+            {
+                Console.WriteLine("Incorrect type:" + response.GetType());
+            }
+        }
+
+        static void GetFriends(Client client)
+        {
+            var response = Friends.Get(client, 0);
+
+            if (response == null)
+            {
+                Console.WriteLine("response is null!");
+                return;
+            }
+
+            if (response.GetType() == typeof(Friends))
+            {
+                var friends = (Friends)response;
+                foreach (var friend in friends.Data)
+                {
+                    Console.WriteLine(friend.Name);
+                }
             }
             else if (response.GetType() == typeof(Error))
             {

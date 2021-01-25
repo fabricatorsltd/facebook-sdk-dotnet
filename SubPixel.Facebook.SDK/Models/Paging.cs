@@ -31,4 +31,10 @@ namespace SubPixel.Facebook.SDK.Models
         [JsonProperty("before")]
         public string Aefore { get; set; }
     }
+
+    public class PagedResponseSummary
+    {
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+    }
 }

@@ -8,7 +8,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Net;
@@ -18,7 +17,7 @@ namespace SubPixel.Facebook.SDK
 {
     public class Client
     {
-        public string APIEndpoint { get { return "https://graph.facebook.com/"; } }
+        public string APIEndpoint => "https://graph.facebook.com/";
         public string AccessToken { get; internal set; }
 
         public Client(
@@ -43,7 +42,7 @@ namespace SubPixel.Facebook.SDK
             try
             {
                 var json = client.DownloadString(APIEndpoint  +
-                    String.Format("debug_token?input_token={0}{1}", tempToken, AccessToken));
+                                                 $"debug_token?input_token={tempToken}");
                 return JsonConvert.DeserializeObject<Models.TokenData>(json).Data;
             }
             catch (WebException ex)
@@ -80,6 +79,42 @@ namespace SubPixel.Facebook.SDK
             {
                 var json = webClient.DownloadString(url);
                 return (Models.IGraphResponse)JsonConvert.DeserializeObject(json, returnObj);
+            }
+            catch (WebException ex)
+            {
+                string responseText;
+                using (var reader = new StreamReader(ex.Response.GetResponseStream()))
+                {
+                    responseText = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<Models.ErrorRootObj>(responseText).Error;
+            }
+            catch (Exception ex)
+            {
+                dynamic error = new ExpandoObject();
+                error.Message = ex.Message;
+                return new Models.Error
+                {
+                    Code = -1,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public Models.IGraphPagedResponse DoPagedRequest(string url, Type returnObj)
+        {
+            if (returnObj.GetInterface("IGraphPagedResponse") == null)
+            {
+                return null;
+            }
+
+            WebClient webClient = new WebClient();
+
+            try
+            {
+                var json = webClient.DownloadString(url);
+                return (Models.IGraphPagedResponse)JsonConvert.DeserializeObject(json, returnObj);
             }
             catch (WebException ex)
             {

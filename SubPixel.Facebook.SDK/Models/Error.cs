@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace SubPixel.Facebook.SDK.Models
 {
-    public class Error : IGraphResponse
+    public class Error : IGraphResponse, IGraphPagedResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }

@@ -9,10 +9,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
-using System.Net;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -154,15 +150,17 @@ namespace SubPixel.Facebook.SDK.Models
 
         public enum Scope
         {
-            id, first_name, last_name, middle_name, name, name_format, picture, short_name, email, birthday, gender
+            id, first_name, last_name, middle_name, name, name_format,
+            picture, short_name, email, birthday, gender, user_friends
         }
 
         public static IGraphResponse Me(Client client, List<Scope> scopes) => Get(client, 0, scopes);
-        public static IGraphResponse Get(Client client, long userId, List<Scope> scopes)
+        public static IGraphResponse Get(Client client, long userId, List<Scope> scopes,
+            string before = null, string after = null)
         {
             string url = client.APIEndpoint;
-            url += String.Format("{0}/?fields=", userId == 0 ? "me" : userId.ToString());
-            StringBuilder _scopes = new StringBuilder();
+            url += $"{(userId == 0 ? "me" : userId.ToString())}/?fields=";
+            var _scopes = new StringBuilder();
             if (scopes != null)
             {
                 foreach (Scope scope in scopes)
@@ -175,7 +173,12 @@ namespace SubPixel.Facebook.SDK.Models
             {
                 _scopes = new StringBuilder("id,first_name,last_name,middle_name,name,name_format,picture,short_name");
             }
-            url += _scopes + client.AccessToken;
+
+            string cursor = "";
+            if (!string.IsNullOrEmpty(cursor)) cursor += $"&before={before}";
+            if (!string.IsNullOrEmpty(after)) cursor += $"&after={after}";
+
+            url += _scopes + cursor + client.AccessToken;
 
             return client.DoRequest(url, typeof(User));
         }
