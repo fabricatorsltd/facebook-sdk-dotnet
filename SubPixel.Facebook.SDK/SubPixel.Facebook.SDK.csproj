@@ -9,8 +9,7 @@
     <RepositoryUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <BuildNumber Condition=" '$(BuildNumber)' == '' ">1</BuildNumber>
-    <VersionSuffix Condition="'$(Configuration)'=='Debug'">-dev</VersionSuffix>
-    <Version>1.1.1$(VersionSuffix)</Version>
+    <Version>1.1.1</Version>
     <FileVersion>1.1.1.$(BuildNumber)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
     <PackageProjectUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</PackageProjectUrl>
