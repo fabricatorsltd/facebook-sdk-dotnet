@@ -35,5 +35,5 @@ jobs:
     - name: Upload dll as artifact
       uses: actions/upload-artifact@v2
       with:
-        name: "${{ steps.vars.outputs.sha_short }}.nupkg"
+        name: "SubPixel.Facebook.SDK-${{ steps.vars.outputs.sha_short }}.dll"
         path: SubPixel.Facebook.SDK/bin/Release/**/SubPixel.Facebook.SDK.dll
