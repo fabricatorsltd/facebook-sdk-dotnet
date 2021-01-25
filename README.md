@@ -17,6 +17,8 @@ _(Here only the major todos are reported)_
 *   [ ] Provide code examples in Wiki
 
 ## Release Notes
+### _1.1.0_
+Implement call to get user's Friends that have installed the app corresponding to the AuthToken.
 ### _1.0.1_
 Downgrade Target Framework to 2.1 in order to increase compatibility.
 ### _1.0.0_
