@@ -52,7 +52,6 @@ namespace SubPixel.Facebook.SDK.Models
 
         [JsonProperty("target_ids")]
         public IEnumerable<long> TargetIds { get; set; }
-
     }
 
     public class TokenData : IGraphResponse
