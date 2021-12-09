@@ -10,7 +10,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace SubPixel.Facebook.SDK.Models
+namespace fabricators.Facebook.SDK.Models
 {
     public class DebugToken : IGraphResponse
     {

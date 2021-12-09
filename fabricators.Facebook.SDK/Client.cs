@@ -13,7 +13,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 
-namespace SubPixel.Facebook.SDK
+namespace fabricators.Facebook.SDK
 {
     public class Client
     {

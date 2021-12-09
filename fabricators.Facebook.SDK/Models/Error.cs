@@ -9,7 +9,7 @@
 
 using Newtonsoft.Json;
 
-namespace SubPixel.Facebook.SDK.Models
+namespace fabricators.Facebook.SDK.Models
 {
     public class Error : IGraphResponse, IGraphPagedResponse
     {

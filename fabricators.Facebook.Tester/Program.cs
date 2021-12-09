@@ -7,12 +7,12 @@
  * Please open an issue on GitHub for any problem or question.
  */
 
-using SubPixel.Facebook.SDK;
-using SubPixel.Facebook.SDK.Models;
+using fabricators.Facebook.SDK;
+using fabricators.Facebook.SDK.Models;
 using System;
 using System.Collections.Generic;
 
-namespace SubPixel.Facebook.Tester
+namespace fabricators.Facebook.Tester
 {
     class Program
     {

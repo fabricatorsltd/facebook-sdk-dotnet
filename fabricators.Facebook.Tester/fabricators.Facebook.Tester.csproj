@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SubPixel.Facebook.SDK\SubPixel.Facebook.SDK.csproj" />
+    <ProjectReference Include="..\fabricators.Facebook.SDK\fabricators.Facebook.SDK.csproj" />
   </ItemGroup>
 
 </Project>

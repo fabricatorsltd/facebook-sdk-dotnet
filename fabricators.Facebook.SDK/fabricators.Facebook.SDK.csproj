@@ -3,29 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>SubPixel</Authors>
+    <Authors>fabricators</Authors>
     <Product>Facebook SDK</Product>
-    <Copyright>SubPixel 2021</Copyright>
-    <RepositoryUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</RepositoryUrl>
+    <Copyright>fabricators 2021</Copyright>
+    <RepositoryUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <BuildNumber Condition=" '$(BuildNumber)' == '' ">1</BuildNumber>
     <Version>1.1.1</Version>
     <FileVersion>1.1.1.$(BuildNumber)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
-    <PackageProjectUrl>https://github.com/SubPixel-it/facebook-sdk-dotnet</PackageProjectUrl>
-    <PackageIcon>Subpixel-logo-2020_icon_whitebg_border.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/fabricators/facebook-sdk-dotnet</PackageProjectUrl>
+    <PackageIcon>fabricators_icon.png</PackageIcon>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageTags>facebook,graph-api,sdk</PackageTags>
     <PackageReleaseNotes>Implement call to get user's Friends that have installed the app corresponding to the AuthToken.</PackageReleaseNotes>
-    <ApplicationIcon></ApplicationIcon>
+    <ApplicationIcon>fabricators_icon.png</ApplicationIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="Subpixel-logo-2020_icon_whitebg_border.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
