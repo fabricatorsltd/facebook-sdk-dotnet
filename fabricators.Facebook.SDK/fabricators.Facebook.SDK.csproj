@@ -8,9 +8,9 @@
     <Copyright>fabricators 2021</Copyright>
     <RepositoryUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <BuildNumber Condition=" '$(BuildNumber)' == '' ">1</BuildNumber>
+    <VersionSuffix Condition=" '$(VersionSuffix)' == '' ">0</VersionSuffix>
     <Version>1.2.0</Version>
-    <FileVersion>1.2.0.$(BuildNumber)</FileVersion>
+    <FileVersion>1.2.0.$(VersionSuffix)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
     <PackageProjectUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</PackageProjectUrl>
     <PackageIcon>fabricators_icon.png</PackageIcon>
