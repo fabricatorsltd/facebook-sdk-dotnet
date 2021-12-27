@@ -9,19 +9,24 @@
     <RepositoryUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <BuildNumber Condition=" '$(BuildNumber)' == '' ">1</BuildNumber>
-    <Version>1.1.1</Version>
-    <FileVersion>1.1.1.$(BuildNumber)</FileVersion>
+    <Version>1.2.0</Version>
+    <FileVersion>1.2.0.$(BuildNumber)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
-    <PackageProjectUrl>https://github.com/fabricators/facebook-sdk-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</PackageProjectUrl>
     <PackageIcon>fabricators_icon.png</PackageIcon>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageTags>facebook,graph-api,sdk</PackageTags>
     <PackageReleaseNotes>Implement call to get user's Friends that have installed the app corresponding to the AuthToken.</PackageReleaseNotes>
-    <ApplicationIcon>fabricators_icon.png</ApplicationIcon>
+    <LangVersion>latest</LangVersion>
+    <Title>fabricators Facebook SDK</Title>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="fabricators_icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

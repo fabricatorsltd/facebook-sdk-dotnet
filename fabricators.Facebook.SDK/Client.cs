@@ -7,10 +7,14 @@
  * Please open an issue on GitHub for any problem or question.
  */
 
+#nullable enable
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using fabricators.Facebook.SDK.Models;
 using Newtonsoft.Json;
 
 namespace fabricators.Facebook.SDK
@@ -18,7 +22,9 @@ namespace fabricators.Facebook.SDK
     public class Client
     {
         public string APIEndpoint => "https://graph.facebook.com/";
-        public string AccessToken { get; internal set; }
+        internal string? AccessToken { get; set; }
+        internal string? ClientSecret { get; }
+        internal ulong? ClientId { get; }
 
         public Client(
             string accessToken)
@@ -29,8 +35,25 @@ namespace fabricators.Facebook.SDK
             }
             AccessToken = accessToken;
         }
+        
+        public Client(
+            ulong clientId,
+            string? clientSecret,
+            string? accessToken = null)
+        {
+            ClientId = clientId;
+            ClientSecret = clientSecret;
 
-        public Models.IGraphResponse DebugToken()
+            if (accessToken == null) return;
+            if (!accessToken.StartsWith("&access_token="))
+            {
+                accessToken = "&access_token=" + accessToken;
+            }
+
+            AccessToken = accessToken;
+        }
+
+        public IGraphResponse DebugToken()
         {
             WebClient client = new WebClient();
             string tempToken = AccessToken;
@@ -43,7 +66,7 @@ namespace fabricators.Facebook.SDK
             {
                 var json = client.DownloadString(APIEndpoint  +
                                                  $"debug_token?input_token={tempToken}{AccessToken}");
-                return JsonConvert.DeserializeObject<Models.TokenData>(json).Data;
+                return JsonConvert.DeserializeObject<TokenData>(json).Data;
             }
             catch (WebException ex)
             {
@@ -53,32 +76,32 @@ namespace fabricators.Facebook.SDK
                     responseText = reader.ReadToEnd();
                 }
 
-                return JsonConvert.DeserializeObject<Models.ErrorRootObj>(responseText).Error;
+                return JsonConvert.DeserializeObject<ErrorRootObj>(responseText).Error;
             }
             catch (Exception ex)
             {
                 dynamic error = new ExpandoObject();
                 error.Message = ex.Message;
-                return new Models.Error
+                return new Error
                 {
                     Message = ex.Message
                 };
             }
         }
 
-        public Models.IGraphResponse DoRequest(string url, Type returnObj)
+        public IGraphResponse DoRequest(string url, Type returnObj)
         {
             if (returnObj.GetInterface("IGraphResponse") == null)
             {
                 return null;
             }
 
-            WebClient webClient = new WebClient();
+            var webClient = new WebClient();
 
             try
             {
                 var json = webClient.DownloadString(url);
-                return (Models.IGraphResponse)JsonConvert.DeserializeObject(json, returnObj);
+                return (IGraphResponse)JsonConvert.DeserializeObject(json, returnObj);
             }
             catch (WebException ex)
             {
@@ -88,13 +111,13 @@ namespace fabricators.Facebook.SDK
                     responseText = reader.ReadToEnd();
                 }
 
-                return JsonConvert.DeserializeObject<Models.ErrorRootObj>(responseText).Error;
+                return JsonConvert.DeserializeObject<ErrorRootObj>(responseText).Error;
             }
             catch (Exception ex)
             {
                 dynamic error = new ExpandoObject();
                 error.Message = ex.Message;
-                return new Models.Error
+                return new Error
                 {
                     Code = -1,
                     Message = ex.Message
@@ -102,7 +125,7 @@ namespace fabricators.Facebook.SDK
             }
         }
 
-        public Models.IGraphPagedResponse DoPagedRequest(string url, Type returnObj)
+        public IGraphPagedResponse DoPagedRequest(string url, Type returnObj)
         {
             if (returnObj.GetInterface("IGraphPagedResponse") == null)
             {
@@ -114,7 +137,7 @@ namespace fabricators.Facebook.SDK
             try
             {
                 var json = webClient.DownloadString(url);
-                return (Models.IGraphPagedResponse)JsonConvert.DeserializeObject(json, returnObj);
+                return (IGraphPagedResponse)JsonConvert.DeserializeObject(json, returnObj);
             }
             catch (WebException ex)
             {
@@ -124,13 +147,13 @@ namespace fabricators.Facebook.SDK
                     responseText = reader.ReadToEnd();
                 }
 
-                return JsonConvert.DeserializeObject<Models.ErrorRootObj>(responseText).Error;
+                return JsonConvert.DeserializeObject<ErrorRootObj>(responseText).Error;
             }
             catch (Exception ex)
             {
                 dynamic error = new ExpandoObject();
                 error.Message = ex.Message;
-                return new Models.Error
+                return new Error
                 {
                     Code = -1,
                     Message = ex.Message
