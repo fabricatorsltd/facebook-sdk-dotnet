@@ -9,8 +9,8 @@
     <RepositoryUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <VersionSuffix Condition=" '$(VersionSuffix)' == '' ">0</VersionSuffix>
-    <Version>1.2.1</Version>
-    <FileVersion>1.2.1.$(VersionSuffix)</FileVersion>
+    <Version>1.2.2</Version>
+    <FileVersion>1.2.2.$(VersionSuffix)</FileVersion>
     <Description>C# Net Core SDK to interact with Facebook's Graph API</Description>
     <PackageProjectUrl>https://github.com/fabricatorsltd/facebook-sdk-dotnet</PackageProjectUrl>
     <PackageIcon>fabricators_icon.png</PackageIcon>
