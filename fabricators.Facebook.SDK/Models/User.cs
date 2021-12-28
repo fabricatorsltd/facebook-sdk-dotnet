@@ -171,7 +171,7 @@ namespace fabricators.Facebook.SDK.Models
             }
             else
             {
-                _scopes = new StringBuilder("id,first_name,last_name,middle_name,name,name_format,picture,short_name");
+                _scopes = new StringBuilder("email,public_profile");
             }
 
             string cursor = "";

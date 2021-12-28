@@ -20,7 +20,7 @@ namespace fabricators.Facebook.Tester
 
         static void Main(string[] args)
         {
-            Console.WriteLine("SubPixel Facebook SDK tester");
+            Console.WriteLine("fabricators Facebook SDK tester");
             Client fbClient = new Client(AUTH_TOKEN);
 
             //List<User.Scope> userScopes = Scopes(fbClient);
